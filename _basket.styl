@@ -1,0 +1,296 @@
+
+.mi-tooltip
+	display none
+
+	position absolute
+	width 260px
+	left 50%
+	bottom 0
+	margin-left -130px
+	margin-bottom 49px
+
+	background-color rgba(0,0,0,.7)
+	border-radius 6px
+	box-shadow 0 0 6px $shadow
+	padding 10px 12px
+	font-size 10px
+	color #fff
+	text-align center
+
+	&:after
+		content ''
+		border-left 8px solid transparent
+		border-right 8px solid transparent
+		border-top 8px solid rgba(0,0,0,.7)
+		position absolute
+		left 50%
+		top 100%
+		margin-left -4px
+
+
+
+@keyframes miInsurancePricePreloader
+	from
+		opacity 0
+		left -150%
+	to
+		opacity 1
+		left 150%
+
+[data-type-price=miInsurancePrice]
+	font-weight bold
+	[data-type=miInsurance]:not([data-active=true]) &
+		opacity .44
+	&[data-price-preloader=true]:not([data-id=insurance_0])
+		position relative
+		color transparent
+		background-color $gray3
+		border-radius 3px
+		overflow hidden
+		display inline-block
+		margin-top -6px
+		top 5px
+		&:after
+			content ''
+			position absolute
+			top 0
+			height: 100%
+			width: 22px
+			transform: skewX(-45deg)
+			left -150%
+			background linear-gradient(90deg, rgba(255, 255, 255, 0), $white)
+			animation miInsurancePricePreloader 1s infinite linear
+
+
+
+.b-basket
+
+		&__insurance
+			flex-basis 100%
+			margin 0 17px 17px
+			display flex
+			flex-wrap wrap
+			justify-content flex-start
+			gap 15.02px
+
+			&-time
+				display none
+
+				position absolute
+				width 260px
+				left 50%
+				bottom 0
+				margin-left -130px
+				margin-bottom 49px
+
+				&:before
+					content ''
+					width 16px
+					height 16px
+					position absolute
+					left 50%
+					top 100%
+					margin -11px 0 0 -4px
+					transform rotate(45deg)
+					box-shadow 0 0 10px $gray2
+
+				&-buble
+					background-color $white
+					border-radius 6px
+					box-shadow 0 0 10px $gray2
+					position relative
+					justify-content center
+					padding 10px 12px
+
+					&:after
+						content ''
+						height 17px
+						position absolute
+						left 0
+						top 100%
+						right 0
+
+				&-desc
+					white-space normal
+					font-size 10px
+					line-height 10px
+					margin-bottom 15px
+					text-align center
+
+				&:after
+					content ''
+					border-left 8px solid transparent
+					border-right 8px solid transparent
+					border-top 8px solid $white
+					position absolute
+					left 50%
+					margin-left -4px
+
+				&-variants
+					display flex
+					justify-content space-between
+
+			&-desc
+				white-space normal
+				line-height 10px
+
+				&-mobile
+					display none
+					font-size 0
+					position absolute
+					left 100%
+					top 24px
+					margin-left 10px
+
+					@media (hover: none)
+						display block
+
+					&:before
+						content '?'
+						font-size 20px
+						line-height 30px
+						height 30px
+						width 30px
+						color $gray2
+						background-color $white
+						box-shadow 0 0 6px $shadow
+						border-radius 888px
+						text-align center
+						position absolute
+						bottom -9px
+
+			&-item
+				white-space nowrap
+				box-shadow 0 0 6px $shadow
+				padding 8px 17px 6.02px
+				cursor pointer
+				border-radius 6.02px
+				border 2px solid transparent
+				user-select none
+				position relative
+
+				&[data-active=true]
+					border 2px solid $orange
+
+				&-hit
+				&-combo
+					background-color $green
+					color $white
+					padding 3.05px 5.03px 2.06px
+					border-radius 3.05px
+					text-transform uppercase
+					font-size 8px
+					display inline-block
+					margin-left 8px
+					position relative
+					top -2.06px
+
+				&-combo
+					background-color $orange
+					display none
+
+				&-time
+					color $black
+					border 2px solid transparent
+					box-shadow 0 0 6px $shadow
+					border-radius 5px
+					padding 5px 13px
+					cursor pointer
+					user-select none
+					font-size 14px
+
+					&[data-active=true]
+						border 2px solid $orange
+
+				&[data-is-desc=true]
+
+					@media (hover: none)
+						margin-right 37px
+
+			&-item:hover .mi-tooltip
+				display block
+
+				@media (hover: none)
+					display none
+
+			&-item:hover &-time
+				display block
+
+				@media (hover: none)
+					display none
+
+			[data-combo-active=comboSet] &-item:not([data-combo-parent=true]):hover &-time
+				display none
+
+			&-form
+				display block
+				margin-bottom 30.05px
+
+				&-desc
+					margin-top -33px
+
+					& > img
+						float left
+						margin-right 13px
+						max-width 125px
+						display block
+						width 100%
+						height auto
+						margin-top -8px
+
+						@media $phone-xs
+							max-width 80px
+
+					& h2
+						@media $phone-xs
+							font-size 20px
+
+				& h3
+					margin-top 26px
+
+				& [data-row-id=base]
+					clear both
+					padding-top 26px
+
+				&-list
+					display flex
+					gap 15px
+					flex-wrap wrap
+					margin-bottom 15px
+					justify-content space-between
+
+				&-item
+					flex-basis calc(50% - 10px)
+
+					@media $phone
+						flex-basis 100%
+
+					& .b-field
+						margin-bottom 0
+
+						& .b-field__label
+							display none
+
+					& .is-error-block
+						margin-bottom 13.04px
+
+					&:hover
+						position relative
+						z-index 1
+
+					&:hover &-label
+						display block
+						width 152px
+						margin-left -76px
+						top auto
+						bottom 100%
+						transform translate(0, 39px)
+
+				[data-row-id=passport] [data-block-index="0"] &-item
+					flex-basis calc(33% - 10px)
+
+					@media $phone
+						flex-basis 100%
+
+				[data-row-id=passport] [data-block-index="2"] &-item
+					flex-basis 100%
